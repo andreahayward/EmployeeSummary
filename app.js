@@ -80,6 +80,78 @@ function employeeQuestions() {
         let employeeType = response.employeeType;
         let employeeEmail = response.employeeEmail;
 
+        //engineer questions
+        if (employeeType === "Engineer") {
+            inquirer.prompt([
+                {
+                    type: "input",
+                    message: "Enter your GitHub username",
+                    name: "gitUser"
+                },
+                {
+                    type: "list",
+                    message: "Are there any other employees you'd like to add?",
+                    choices: ["Yes", "No"],
+                    name: "addlEmployees"
+                }
+            ])
+            .then(function(response) {
+                let employeeGitHub = response.gitUser;
+                let engineer = new Engineer(
+                    employeeName,
+                    employeeID,
+                    employeeEmail,
+                    employeeGitHub
+                );
+
+                employeeList.push(engineer);
+                employeeID++;
+
+                if (response.addlEmployees === "Yes") {
+                    employeeQuestions();
+                } else {
+                    generatePage();
+                    return;
+                }
+            });
+        // triggering intern questions    
+        } else {
+            inquirer.prompt([
+                {
+                    type: "input",
+                    message: "What school did/does the intern attend?",
+                    name: "internSchool"
+                },
+                {
+                    type: "list",
+                    message: "Are there any other employees you'd like to add?",
+                    choices: ["Yes", "No"],
+                    name: "addlEmployees"
+                }
+
+            ])
+            .then(function(response) {
+                let employeeSchool = response.internSchool;
+                let intern = new Intern(
+                    employeeName,
+                    employeeID,
+                    employeeEmail,
+                    employeeSchool
+                );
+                
+                employeeList.push(intern);
+                employeeID++;
+
+                if (response.addlEmployees === "Yes") {
+                    employeeQuestions();
+                } else {
+                    generatePage();
+                    return;
+                }
+            });
+            }
+        });
+
 
     })
 }
