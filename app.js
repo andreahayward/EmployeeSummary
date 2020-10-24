@@ -13,6 +13,7 @@ const render = require("./lib/htmlRenderer");
 let team = [];
 let employeeID = 1;
 
+// manager questions
 function managerQuestions() {
     inquirer.prompt([
             {
@@ -27,7 +28,7 @@ function managerQuestions() {
              },
              {
                 type: "input",
-                message: "What is your office number?",
+                message: "What is the Manager's office number?",
                 name: "managerNumber"
              }
 
@@ -46,8 +47,41 @@ function managerQuestions() {
             employeeList.push(manager);
             employeeID++;
 
-            console.log(``)
-        })
+            console.log(`Manager's Employee Information`);
+
+            employeeQuestions();
+        });
+}
+
+// identifying employee type & basic info
+function employeeQuestions() {
+    inquirer.prompt([
+        {
+            type: "input",
+            message: "Enter the Employee's name.",
+            name: "employeeName"
+        },
+        {
+            type: "list",
+            message: "Select the Employee's role.",
+            choices: ["Intern", "Engineer"],
+            name: "employeeType"
+        },
+        {
+            type: "input",
+            message: "Enter the Employee's email address.",
+            name: "employeeEmail"
+        }
+        
+    ])
+    // capturing repsonse for employee type
+    .then(function(response) {
+        let employeeName = response.employeeName;
+        let employeeType = response.employeeType;
+        let employeeEmail = response.employeeEmail;
+
+
+    })
 }
 
 
