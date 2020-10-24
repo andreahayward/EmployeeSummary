@@ -10,23 +10,25 @@ const outputPath = path.join(OUTPUT_DIR, "team.html");
 
 const render = require("./lib/htmlRenderer");
 
-function managerPrompts() {
-    inquirer
-        .prompt([
+let team = [];
+let employeeID = 1;
+
+function managerQuestions() {
+    inquirer.prompt([
             {
                 type: "input",
-                message: "Manager Name",
+                message: "Enter the Manager's name.",
                 name: "managerName"
             },
             {
                 type: "input",
-                message: "What is your email address?",
+                message: "Enter the Manager's email address.",
                 name: "managerEmail"
              },
              {
                 type: "input",
                 message: "What is your office number?",
-                name: "managerOffice"
+                name: "managerNumber"
              }
 
         ])
@@ -40,6 +42,11 @@ function managerPrompts() {
                 managerEmail,
                 managerNumber,
             );
+
+            employeeList.push(manager);
+            employeeID++;
+
+            console.log(``)
         })
 }
 
