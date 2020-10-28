@@ -191,12 +191,23 @@ function employeeQuestions() {
 
         <div class="container mt-5">
             <!-- card group start -->
-            <div class="card
+            <div class="card-deck d-inline-flex justify-content-center">
+                ${allCards}
+            </div>
+            <! -- end -->
+        </div>
+        </body>
+        </html>
+        `;
 
-
-
-        `
+    fs.writeFile("./output/roster.html", fullHTML, function(err) {
+        if (err) {
+            return console.log(err);
+        }
+    });
     }
+
+    managerQuestions();
 
 
 // Write code to use inquirer to gather information about the development team members,
