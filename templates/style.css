@@ -1,0 +1,19 @@
+body {
+    background: linear-gradient(to right, #8b0000, #a50000, #be0000, #d80000);
+    -moz-background-size: cover;
+    background-size: cover;
+    -o-background-size: cover;
+  }
+
+.jumbotron {
+    background: linear-gradient(to right #a9a9a9, #bdbdbd, #d0d0d0, #e4e4e4);
+}
+
+.card-header {
+    background-color: #515151;
+}
+
+.team-area {
+    display: grid;
+}
+
